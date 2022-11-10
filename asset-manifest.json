@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/FoodDelivery/static/css/main.fbffd707.css",
-    "main.js": "/FoodDelivery/static/js/main.9dc34ec1.js",
-    "static/media/vision.png": "/FoodDelivery/static/media/vision.067d4ae1936d64a577ce.png",
-    "static/media/mjolnir.png": "/FoodDelivery/static/media/mjolnir.61f31e1809f12183a524.png",
-    "static/media/error.gif": "/FoodDelivery/static/media/error.42292aa12b6bc303ce99.gif",
-    "index.html": "/FoodDelivery/index.html",
-    "main.fbffd707.css.map": "/FoodDelivery/static/css/main.fbffd707.css.map",
-    "main.9dc34ec1.js.map": "/FoodDelivery/static/js/main.9dc34ec1.js.map"
+    "main.css": "/MarvelPortal/static/css/main.fbffd707.css",
+    "main.js": "/MarvelPortal/static/js/main.45cd8320.js",
+    "static/media/vision.png": "/MarvelPortal/static/media/vision.067d4ae1936d64a577ce.png",
+    "static/media/mjolnir.png": "/MarvelPortal/static/media/mjolnir.61f31e1809f12183a524.png",
+    "static/media/error.gif": "/MarvelPortal/static/media/error.42292aa12b6bc303ce99.gif",
+    "index.html": "/MarvelPortal/index.html",
+    "main.fbffd707.css.map": "/MarvelPortal/static/css/main.fbffd707.css.map",
+    "main.45cd8320.js.map": "/MarvelPortal/static/js/main.45cd8320.js.map"
   },
   "entrypoints": [
     "static/css/main.fbffd707.css",
-    "static/js/main.9dc34ec1.js"
+    "static/js/main.45cd8320.js"
   ]
 }
