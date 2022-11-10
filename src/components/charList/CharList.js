@@ -1,6 +1,8 @@
 import './charList.scss';
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
@@ -11,7 +13,7 @@ class CharList extends Component {
         error: false,
         loading: true,
         newItemLoading: false,
-        offset: 210,
+        offset: 300,
         charEnded: false
     }
     
@@ -40,8 +42,6 @@ class CharList extends Component {
             ended = true
         }
 
-
-
 		this.setState(({offset, charList}) => ({
             charList: [...charList, ...newCharList],
             loading: false,
@@ -58,8 +58,23 @@ class CharList extends Component {
         });
     }
 
+    itemRefs = [];
+
+    setRef = (ref) => {
+        this.itemRefs.push(ref);
+    }
+
+    addActiveClass = (id) => {
+        if (this.itemRefs) {
+            this.itemRefs.forEach(item => {
+                item.classList.remove('char__item_selected');
+            });
+            this.itemRefs[id].classList.add('char__item_selected')
+        }
+    }
+
     renderItems = (data) => {
-        const elems = data.map((item)=> {
+        const elems = data.map((item, i)=> {
             let styled = {'objectFit' : 'cover'};
             if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
                 styled = {'objectFit' : 'unset'};
@@ -67,9 +82,13 @@ class CharList extends Component {
 
             return (
                 <li
+                    ref={this.setRef}
                     className="char__item"
                     key={item.id}
-                    onClick={() => this.props.onCharSelected(item.id)}>
+                    onClick={() => {
+                        this.props.onCharSelected(item.id)
+                        this.addActiveClass(i);
+                    }}>
                     <img src={item.thumbnail} alt={item.name} style={styled} />
                     <div className="char__name">{item.name}</div>
                 </li>
@@ -107,6 +126,10 @@ class CharList extends Component {
             </div>
         )
     }
+}
+
+CharList.propTypes = {
+    onCharSelected: PropTypes.func.isRequired
 }
 
 export default CharList;
