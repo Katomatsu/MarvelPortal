@@ -11,7 +11,7 @@ const CharList = (props) => {
 
     const [charList, setCharList] = useState([]);
     const [newItemLoading, setNewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(300);
+    const [offset, setOffset] = useState(309);
     const [charEnded, setCharEnded] = useState(false);
 
 
@@ -38,7 +38,6 @@ const CharList = (props) => {
         setOffset(offset => offset + 9);
         setCharEnded(ended)
 	};
-
     const itemRefs = useRef([]);
 
     const addActiveClass = (id) => {
