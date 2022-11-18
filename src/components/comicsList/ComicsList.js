@@ -1,8 +1,7 @@
 import './comicsList.scss';
-import uw from '../../resources/img/UW.png';
-import xMen from '../../resources/img/x-men.png';
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -42,11 +41,11 @@ const ComicsList = () => {
         const items =  data.map(item => {
             return (
                 <li key={item.id}  className="comics__item">
-                    <a href="#">
+                    <Link to={`/MarvelPortal/comics/${item.id}`}>
                         <img src={item.thumbnail} alt={item.title} className="comics__item-img"/>
                         <div className="comics__item-name">{item.title}</div>
-                        <div className="comics__item-price">{item.price + '$'}</div>
-                    </a>
+                        <div className="comics__item-price">{item.price}</div>
+                    </Link>
                 </li>
             )
         })
