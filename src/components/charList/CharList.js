@@ -3,6 +3,8 @@ import './charList.scss';
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
@@ -53,22 +55,27 @@ const CharList = (props) => {
 			}
 
 			return (
-				<li
-					ref={(el) => (itemRefs.current[i] = el)}
-					className="char__item"
-					key={item.id}
-					onClick={() => {
-						props.onCharSelected(item.id);
-						addActiveClass(i);
-					}}
-				>
-					<img src={item.thumbnail} alt={item.name} style={styled} />
-					<div className="char__name">{item.name}</div>
-				</li>
+				<CSSTransition key={item.id} timeout={600} classNames="char__item">
+					<a href="#charContent" ref={(el) => (itemRefs.current[i] = el)}>
+						<li
+							className="char__item"
+							onClick={() => {
+								props.onCharSelected(item.id);
+								addActiveClass(i);
+							}}>
+							<img src={item.thumbnail} alt={item.name} style={styled} />
+							<div className="char__name">{item.name}</div>
+						</li>
+					</a>
+				</CSSTransition>
 			);
 		});
 
-		return <ul className="char__grid">{elems}</ul>;
+		return  <ul className="char__grid">
+					<TransitionGroup component={null}>
+						{elems}
+					</TransitionGroup>
+				</ul>;
 	}
 	const items = renderItems(charList);
 
